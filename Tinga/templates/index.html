@@ -1,0 +1,32 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css"
+    rel="stylesheet" type="text/css">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.css"
+    rel="stylesheet" type="text/css">
+
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.js"></script>
+</head>
+<body>
+<H1>Stock Tracker</H1>
+
+<form action="/">
+{% block content %}
+  <form method="post">
+	<label for="stock">Stock</label>
+	<input name="stock" id="stock" required>
+	<input type="submit" value="Submit">
+  </form>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+{% endblock %}
+</form>
+
+{{ script|safe }}
+{{ div|safe }}
+
